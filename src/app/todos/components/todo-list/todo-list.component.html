@@ -1,4 +1,4 @@
-<ng-container>
+<ng-container *ngIf="todos$ | async as todos; else loading">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -7,14 +7,15 @@
         <th>Status</th>
       </tr>
     </thead>
-    {{
-      todos$ | async | json
-    }}
     <tbody>
-      <tr>
-        <td>todo.name</td>
+      <tr *ngFor="let todo of todos">
+        <td>{{ todo.name }}</td>
         <td>
-          <button type="button" class="btn btn-outline-info" (click)="onEdit()">
+          <button
+            type="button"
+            class="btn btn-outline-info"
+            (click)="onEdit(todo)"
+          >
             Edit</button
           >&nbsp;
           <button type="button" class="btn btn-outline-danger">Delete</button>

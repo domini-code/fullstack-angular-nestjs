@@ -37,7 +37,7 @@ export class FormComponent implements OnInit {
   private refillForm(todo: Todo) {
     this.todoForm.patchValue({
       _id: todo._id,
-      title: todo.name,
+      name: todo.name,
     });
   }
 }

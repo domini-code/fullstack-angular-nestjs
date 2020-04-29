@@ -17,5 +17,7 @@ export class TodoListComponent implements OnInit {
     this.todos$ = this.todosSvc.getAll();
   }
 
-  onEdit(): void {}
+  onEdit(todo: Todo): void {
+    console.log('Edit->', todo);
+  }
 }
