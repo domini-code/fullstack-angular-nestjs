@@ -1,3 +1,4 @@
+import { TodosService } from '@todosFE/services/todos.service';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '@todosAPI/interfaces/todo.interface';
@@ -8,11 +9,13 @@ import { Todo } from '@todosAPI/interfaces/todo.interface';
   styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent implements OnInit {
-  constructor() {}
+  todos$: Observable<Todo[]>;
 
-  ngOnInit(): void {}
+  constructor(private todosSvc: TodosService) {}
 
-  onEdit(): void {
-    // this.store.dispatch(new SetSelectedTodo(todo));
+  ngOnInit(): void {
+    this.todos$ = this.todosSvc.getAll();
   }
+
+  onEdit(): void {}
 }

@@ -7,6 +7,9 @@
         <th>Status</th>
       </tr>
     </thead>
+    {{
+      todos$ | async | json
+    }}
     <tbody>
       <tr>
         <td>todo.name</td>

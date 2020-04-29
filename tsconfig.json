@@ -6,6 +6,7 @@
       "@server/*": ["server/*"],
       "@todosAPI/*": ["server/todos/*"],
       "@app/*": ["src/app/*"],
+      "@todosFE/*": ["src/app/todos/*"],
       "@shared/*": ["src/app/shared/*"],
       "@environments/*": ["src/environments/*"]
     },
