@@ -1,8 +1,8 @@
-import { IsString, IsBoolean, IsInt } from 'class-validator';
+import { IsString, IsBoolean } from 'class-validator';
 
 export class CreateTodoDto {
-  @IsInt()
-  readonly id: number;
+  @IsString()
+  readonly id: string;
 
   @IsString()
   readonly name: string;
