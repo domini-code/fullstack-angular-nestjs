@@ -2,7 +2,7 @@ import { IsString, IsBoolean } from 'class-validator';
 
 export class CreateTodoDto {
   @IsString()
-  readonly id: string;
+  readonly _id: string;
 
   @IsString()
   readonly name: string;
