@@ -4,24 +4,30 @@
       <tr>
         <th>Name</th>
         <th>Actions</th>
-        <th>Status</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let todo of todos">
-        <td>{{ todo.name }}</td>
+        <td [ngClass]="{ 'strike-through': todo.completed }">
+          {{ todo.name }}
+        </td>
         <td>
           <button
             type="button"
             class="btn btn-outline-info"
             (click)="onEdit(todo)"
+            [disabled]="todo.completed"
           >
             Edit</button
           >&nbsp;
-          <button type="button" class="btn btn-outline-danger">Delete</button>
-        </td>
-        <td>
-          <input type="checkbox" />
+          <button
+            type="button"
+            class="btn btn-outline-danger"
+            (click)="onDelete(todo)"
+            [disabled]="todo.completed"
+          >
+            Delete
+          </button>
         </td>
       </tr>
     </tbody>

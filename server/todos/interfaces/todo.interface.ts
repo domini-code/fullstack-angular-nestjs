@@ -1,5 +1,5 @@
 export interface Todo {
-  readonly _id: string;
-  readonly name: string;
-  readonly completed: boolean;
+  _id?: string;
+  name: string;
+  completed: boolean;
 }

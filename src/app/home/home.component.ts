@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { TodosService } from '@todosFE/services/todos.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
+  constructor(private todosSvc: TodosService) {}
 
-  constructor() { }
-
-  ngOnInit(): void {
+  showForm() {
+    const objTodo = {
+      name: '',
+      completed: false,
+    };
+    this.todosSvc.changeTodoSelected(objTodo);
   }
-
 }

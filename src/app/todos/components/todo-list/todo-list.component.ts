@@ -18,6 +18,16 @@ export class TodoListComponent implements OnInit {
   }
 
   onEdit(todo: Todo): void {
-    console.log('Edit->', todo);
+    this.todosSvc.changeTodoSelected(todo);
+  }
+
+  onDelete(todo: Todo): void {
+    const confirmacion = confirm('Are you sure?');
+    if (confirmacion) {
+      const { _id } = todo;
+      this.todosSvc.deleteTodo(_id).subscribe(() => {
+        window.alert('Deleted!');
+      });
+    }
   }
 }

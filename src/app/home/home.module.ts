@@ -7,8 +7,7 @@ import { TodoListComponent } from '@app/todos/components/todo-list/todo-list.com
 import { HomeRoutingModule } from '@app/home/home-routing.module';
 import { HomeComponent } from '@app/home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TodosService } from '@todosFE/services/todos.service';
-import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -16,12 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormComponent,
     HeaderComponent,
   ],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-  ],
-  providers: [TodosService],
+  imports: [CommonModule, HomeRoutingModule, FormsModule, ReactiveFormsModule],
+  providers: [],
 })
 export class HomeModule {}

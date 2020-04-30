@@ -1,43 +1,31 @@
+import { TodosService } from '@todosFE/services/todos.service';
 import { Todo } from '@todosAPI/interfaces/todo.interface';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
 })
-export class FormComponent implements OnInit {
-  public todoForm: FormGroup;
-  public editTodo = false;
+export class FormComponent {
+  public todo: Todo;
 
-  constructor(private fb: FormBuilder) {
-    this.createForm();
-  }
+  constructor(public todosSvc: TodosService) {}
 
-  ngOnInit(): void {}
-
-  onSave(form: Todo) {
-    if (this.editTodo) {
-      // TODO: services UpdateTodo;
+  onSave(todo: Todo) {
+    if (todo._id) {
+      this.todosSvc.updateTodo(todo).subscribe((res) => {
+        console.log('UpdateTodo-->', res);
+      });
     } else {
-      // TODO: services AddTodo;
+      this.todosSvc.addTodo(todo).subscribe((res) => {
+        console.log('AddTodo-> ', res);
+      });
     }
+    this.setTodoSeletected();
   }
 
-  private createForm() {
-    this.todoForm = this.fb.group({
-      _id: [''],
-      name: [''],
-      completed: [false],
-    });
-  }
-
-  private refillForm(todo: Todo) {
-    this.todoForm.patchValue({
-      _id: todo._id,
-      name: todo.name,
-    });
+  setTodoSeletected() {
+    this.todosSvc.changeTodoSelected(null);
   }
 }
