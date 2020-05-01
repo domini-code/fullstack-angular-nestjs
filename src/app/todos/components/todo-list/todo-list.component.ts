@@ -1,5 +1,5 @@
 import { TodosService } from '@todosFE/services/todos.service';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '@todosAPI/interfaces/todo.interface';
 
@@ -9,12 +9,12 @@ import { Todo } from '@todosAPI/interfaces/todo.interface';
   styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent implements OnInit {
-  todos$: Observable<Todo[]>;
-
+  // todos$: Observable<Todo[]>;
+  public todos$: Observable<Todo[]> = this.todosSvc.todosWithAdd$;
   constructor(private todosSvc: TodosService) {}
 
   ngOnInit(): void {
-    this.todos$ = this.todosSvc.getAll();
+    // this.todos$ = this.todosSvc.getAll();
   }
 
   onEdit(todo: Todo): void {

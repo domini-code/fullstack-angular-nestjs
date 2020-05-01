@@ -22,7 +22,7 @@ export class FormComponent {
         console.log('AddTodo-> ', res);
       });
     }
-    this.setTodoSeletected();
+    // this.setTodoSeletected();
   }
 
   setTodoSeletected() {
