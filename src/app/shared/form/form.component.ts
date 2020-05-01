@@ -1,4 +1,4 @@
-import { TodosService } from '@todosFE/services/todos.service';
+import { TodosService } from '@todo';
 import { Todo } from '@todosAPI/interfaces/todo.interface';
 import { Component } from '@angular/core';
 
@@ -22,7 +22,7 @@ export class FormComponent {
         console.log('AddTodo-> ', res);
       });
     }
-    // this.setTodoSeletected();
+    this.setTodoSeletected();
   }
 
   setTodoSeletected() {

@@ -13,23 +13,10 @@ import {
 } from 'rxjs/operators';
 @Injectable()
 export class TodosService {
-  private selectedSubject = new BehaviorSubject<Todo>(null);
-  todoSelectedAction$ = this.selectedSubject.asObservable();
-
-  // private todoInsertedSubject = new Subject<Todo>();
-  // todoInsertedAction$ = this.todoInsertedSubject.asObservable();
-
   private URL_API = 'http://localhost:4201/api/todos';
+  private selectedSubject = new BehaviorSubject<Todo>(null);
 
-  // allTodos$ = this.http.get<Todo[]>(this.URL_API).pipe(
-  //   tap((response) => console.log(JSON.stringify(response))),
-  //   shareReplay(1),
-  //   catchError(this.handleError)
-  // );
-
-  // todosWithNew$ = merge(this.allTodos$, this.todoSelectedAction$).pipe(
-  //   scan((acc: Todo[], value: Todo) => [...acc, value])
-  // );
+  todoSelectedAction$ = this.selectedSubject.asObservable();
   private todoInsertedSubject = new Subject<Todo>();
   contactInsertedActions$ = this.todoInsertedSubject.asObservable();
 
@@ -40,9 +27,6 @@ export class TodosService {
   public todosWithAdd$ = merge(this.todos$, this.contactInsertedActions$).pipe(
     scan((acc: Todo[], value: Todo) => [...acc, value])
   );
-  // newTodo(newTodo?: Todo) {
-  //   this.todoInsertedSubject.next(newTodo);
-  // }
 
   constructor(private http: HttpClient) {}
 
@@ -50,9 +34,9 @@ export class TodosService {
     this.selectedSubject.next(todo);
   }
 
-  getAll(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(this.URL_API);
-  }
+  // getAll(): Observable<Todo[]> {
+  //   return this.http.get<Todo[]>(this.URL_API);
+  // }
 
   addTodo(todo: Todo): Observable<Todo> {
     const objTodo: Todo = {
