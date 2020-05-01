@@ -1,4 +1,4 @@
-import { TodosService } from '@todo';
+import { TodosService } from '@todosFE/services/todos.service';
 import { Todo } from '@todosAPI/interfaces/todo.interface';
 import { Component } from '@angular/core';
 
